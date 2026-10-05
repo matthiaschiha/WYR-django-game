@@ -1,0 +1,521 @@
+/* =========================================================
+   WOULD YOU RATHER...
+   Single stylesheet
+   ========================================================= */
+
+/* -------------------------
+   1. RESET / BASE
+   ------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #f5f5f5;
+    color: #080808;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+button:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: 4px;
+}
+
+.site {
+    min-height: 100vh;
+}
+
+/* -------------------------
+   2. PAGE SYSTEM
+   Each screen is its own
+   editable section.
+   ------------------------- */
+.page {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 38px;
+    overflow: hidden;
+}
+
+.page.active {
+    display: block;
+    animation: pageIn 0.35s ease both;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------------
+   3. BOTTOM BLACK BAR
+   ------------------------- */
+.bottom-bar {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 27px;
+    background: #000;
+}
+
+/* -------------------------
+   4. TYPOGRAPHY / LOGO
+   ------------------------- */
+.coming-soon {
+    position: absolute;
+    top: 28px;
+    left: 25px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    transform: rotate(-2deg);
+    line-height: 0.82;
+    user-select: none;
+}
+
+.logo span {
+    font-family: "Arial Black", Impact, sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 78px);
+    letter-spacing: -5px;
+    -webkit-text-stroke: 1px currentColor;
+    text-shadow: 4px 5px 0 #111;
+}
+
+.logo span:first-child {
+    color: #ff3035;
+}
+
+.logo span:last-child {
+    color: #2995ef;
+    margin-left: 40px;
+}
+
+.logo-small span {
+    font-size: 29px;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 0 #111;
+}
+
+.logo-small span:last-child {
+    margin-left: 19px;
+}
+
+/* -------------------------
+   5. HOME
+   ------------------------- */
+.page-home {
+    min-height: 100vh;
+}
+
+.home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -47%);
+}
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 132px;
+    gap: 8px;
+    margin-top: 35px;
+}
+
+/* -------------------------
+   6. BUTTONS
+   ------------------------- */
+.btn {
+    border: 0;
+    border-radius: 5px;
+    min-height: 22px;
+    padding: 4px 15px;
+    color: #fff;
+    background: #000;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    background: #181818;
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* -------------------------
+   7. QUESTION SCREEN
+   ------------------------- */
+.page-play {
+    display: block;
+}
+
+.question-area {
+    width: min(680px, calc(100% - 40px));
+    margin: 0 auto;
+    padding-top: 79px;
+}
+
+.question-area h1 {
+    margin: 0 0 7px;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.choice-card {
+    position: relative;
+    display: flex;
+    height: 120px;
+    overflow: visible;
+    border-radius: 16px;
+}
+
+.choice {
+    position: relative;
+    flex: 1;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 11px;
+    transition:
+        filter 0.2s ease,
+        transform 0.2s ease;
+}
+
+.choice span {
+    position: relative;
+    z-index: 2;
+}
+
+.choice:hover {
+    filter: brightness(1.06);
+    transform: scaleY(1.035);
+    z-index: 1;
+}
+
+.choice-blue {
+    border-radius: 16px 0 0 16px;
+    background: #2995ef;
+}
+
+.choice-red {
+    border-radius: 0 16px 16px 0;
+    background: #ff3035;
+}
+
+.or-circle {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 63px;
+    height: 63px;
+    place-items: center;
+    border: 1.5px solid #111;
+    border-radius: 50%;
+    background: #fff;
+    color: #080808;
+    font-size: 12px;
+    font-weight: 900;
+    transform: translate(-50%, -50%);
+}
+
+/* -------------------------
+   8. SCREEN NAVIGATION
+   ------------------------- */
+.screen-nav {
+    position: absolute;
+    right: 0;
+    bottom: 53px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 37px;
+}
+
+.round-nav,
+.home-circle {
+    display: grid;
+    place-items: center;
+    border: 0;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        filter 0.18s ease;
+}
+
+.round-nav {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.round-nav:hover,
+.home-circle:hover {
+    transform: scale(1.1);
+    filter: brightness(1.08);
+}
+
+.round-nav.blue {
+    background: #2995ef;
+}
+
+.round-nav.red {
+    background: #ff3035;
+}
+
+.home-circle {
+    position: absolute;
+    left: 50%;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: #fff;
+    background: #000;
+    font-size: 9px;
+    transform: translateX(-50%);
+}
+
+.home-circle:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* -------------------------
+   9. RESULTS
+   ------------------------- */
+.page-results {
+    display: block;
+}
+
+.results-content {
+    width: min(680px, calc(100% - 40px));
+    margin: 0 auto;
+    padding-top: 225px;
+}
+
+.result-choice {
+    width: 100%;
+}
+
+.result-bar {
+    position: relative;
+    display: flex;
+    height: 30px;
+    overflow: visible;
+    border-radius: 20px;
+}
+
+.result-side {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.result-blue {
+    border-radius: 20px 0 0 20px;
+    background: #2995ef;
+}
+
+.result-red {
+    border-radius: 0 20px 20px 0;
+    background: #ff3035;
+}
+
+.result-bar .or-circle {
+    width: 82px;
+    height: 82px;
+    font-size: 11px;
+}
+
+.result-message {
+    margin: 46px 0 9px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.vote-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 13px;
+    margin-bottom: 3px;
+    font-size: 8px;
+}
+
+.vote-meter {
+    display: flex;
+    width: 100%;
+    height: 27px;
+    overflow: hidden;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    transition: all 0.4s ease;
+}
+
+.meter-blue,
+.meter-red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: flex-basis 0.5s ease;
+}
+
+.meter-blue {
+    flex-basis: 60%;
+    background: #2995ef;
+    border-radius: 20px;
+}
+
+.meter-red {
+    flex-basis: 40%;
+    background: #ff3035;
+    border-radius: 0 20px 20px 0;
+}
+
+/* -------------------------
+   10. ABOUT
+   ------------------------- */
+.page-about {
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.about-content {
+    width: min(420px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 32px 0 80px;
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+.about-content .logo {
+    margin: 0 auto 7px;
+}
+
+.about-content p {
+    margin: 8px 0;
+}
+
+.about-content h2 {
+    margin: 21px 0 7px;
+    font-size: 17px;
+}
+
+/* -------------------------
+   11. RESPONSIVE
+   ------------------------- */
+@media (max-width: 700px) {
+    .logo span {
+        font-size: 50px;
+    }
+
+    .logo span:last-child {
+        margin-left: 25px;
+    }
+
+    .question-area {
+        padding-top: 100px;
+    }
+
+    .choice-card {
+        height: 105px;
+    }
+
+    .results-content {
+        padding-top: 180px;
+    }
+
+    .screen-nav {
+        padding: 0 22px;
+    }
+}
+
+@media (max-width: 460px) {
+    .logo span {
+        font-size: 39px;
+        letter-spacing: -3px;
+    }
+
+    .logo span:last-child {
+        margin-left: 20px;
+    }
+
+    .question-area h1 {
+        font-size: 13px;
+    }
+
+    .choice {
+        font-size: 9px;
+    }
+
+    .or-circle {
+        width: 54px;
+        height: 54px;
+        font-size: 10px;
+    }
+
+    .result-bar .or-circle {
+        width: 64px;
+        height: 64px;
+    }
+
+    .results-content {
+        padding-top: 150px;
+    }
+
+    .about-content {
+        width: min(360px, calc(100% - 30px));
+    }
+}

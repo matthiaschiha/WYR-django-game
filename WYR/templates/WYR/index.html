@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    {% load static %}
+        
+    <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
+</head>
+<body>
+    <!-- =========================
+         HOME / MAIN MENU
+         ========================= -->
+    <section id="home" class="page page-home">
+      <p class="coming-soon">More coming soon...</p>
+
+      <div class="home-content">
+        <div class="logo" aria-label="Would You Rather">
+          <span>WOULD YOU</span>
+          <span>RATHER...</span>
+        </div>
+
+        <div class="home-buttons">
+        <a href="{% url 'WYR:SCQ' scenario.id %}"><button class="btn btn-dark" data-go="play">Play</button></a>
+        </div>
+      </div>
+
+      <footer class="bottom-bar"></footer>
+    </section>
+
+   
+
+</body>
+</html
