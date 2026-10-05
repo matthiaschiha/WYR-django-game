@@ -1,25 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.db.models import F
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
+import random
+# Create your views here.
+from .models import Scenario, Category
 
 # Create your views here.
-<<<<<<< Updated upstream
-
-def index(request):
-    return HttpResponse("WELCOME TO WOULD YOU RATHER?. \n A GAME ABOUT EXPERIENCES. \n THIS IS GOING TO BE THE MENU PAGE")
-=======
 class Index(generic.View):
-    model = Scenario
     template_name = "WYR/index.html" 
-    def get(self, request):
-        question = get_object_or_404(Scenario, pk=1)
-        return render(
-            request,
-            "WYR/index.html",
-            {
-                "scenario":question,
-            }
-
-        )
     
 class SCQView(generic.DetailView):
     model = Scenario
@@ -30,8 +22,6 @@ class VotesView(generic.DetailView):
     model = Scenario
     template_name = "WYR/votes.html"
 
-
-#Voting systems
 
 def votes(request, scenario_id):
 
@@ -84,9 +74,6 @@ def TotalVotes(request, scenario_id):
         }
     )
 
-
-#Navigation
-
 #button to the next question
 def next_question(request, scenario_id):
     current_question = get_object_or_404(Scenario, pk=scenario_id)
@@ -129,4 +116,4 @@ def prev_question(request, scenario_id):
 
     return HttpResponseRedirect(reverse("WYR:SCQ", args=(prev_question.id,)))
     #move back to the next one by decreasing the index of the latest questions
->>>>>>> Stashed changes
+    

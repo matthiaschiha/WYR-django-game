@@ -4,73 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Would you rather?</title>
-    {% load static %}
-    
-    <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
 </head>
 <body>
-    <section id="results" class="page page-results">
-        <div class="results-content">
+    <form>
+
+        <fieldset>
             <Legend>Would you rather?...</Legend>
-        
+
             {% if error_message %}
             <p class="error-message">
                 {{ error_message }}
             </p>
             {% endif %}
-            <div class="result-choice">
-                <div class="result-bar">
-                    <div class="result-side result-blue" id="blueResult">
-                        <span>{{ option_1 }}</span>
-                    </div>
         
-                    <div class="or-circle">OR</div>
+            <p>
+                {{ option_1 }}
+                {{ Votes_1 }}
+                <p>{{ unopercentage }}</p>
+            </p>
         
-                    <div class="result-side result-red" id="redResult">
-                        <span>{{ option_2 }}</span>
-                    </div>
-                </div>
         
-                <p class="result-message" id="resultMessage">
-                    You'd rather:
-                </p>
-        
-                <div class="vote-labels">
-                    <strong>VOTES: <span id="blueVotes">{{ Votes_1 }}</span></strong>
-                    <strong>VOTES: <span id="redVotes">{{ Votes_2 }}</span></strong>
-                </div>
-        
-                <div class="vote-meter" aria-label="Vote results">
-                    <div class="meter-blue" id="meterBlue">{{ unopercentage }}</div>
-                    <div class="meter-red" id="meterRed">{{ dospercentage }}</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <nav class="screen-nav" aria-label="Play navigation">
-    
-        <form action="{% url 'WYR:prev' scenario.id %}" method="post">
-            {% csrf_token %}
-    
-            <input type="submit" value="Previous" id="prev" class="round-nav blue">
-        </form>
-    
-        <a href="{% url 'WYR:index' %}" class="home-circle">
-            Home
-        </a>
-    
-        <form action="{% url 'WYR:next' scenario.id %}" method="post">
-            {% csrf_token %}
-    
-            <input type="submit" value="Next" id="next" class="round-nav red">
-        </form>
-    
-    </nav>
-    
-    
-    <footer class="bottom-bar">
-        <p>&copy; 2026 Matthew Chihata</p>
-    </footer>
+            <p>
+                {{ option_2 }}
+                {{ Votes_2 }}
+                <p>{{ dospercentage }}</p>
+            </p>
+        </fieldset>
+    </form>
+
+            <section id="buttonsect">
+            
+                <form action="{% url 'WYR:prev' scenario.id %}" method="post">
+                    {% csrf_token %}
+            
+                    <input type="submit" value="Previous" id="prev" class="button">
+                </form>
+            
+                <a href="{% url 'WYR:index' %}" class="home-button">
+                    Go Home
+                </a>
+            
+                <form action="{% url 'WYR:next' scenario.id %}" method="post">
+                    {% csrf_token %}
+            
+                    <input type="submit" value="Next" id="next" class="button">
+                </form>
+            
+            </section>
 
     
 </body>
