@@ -11,8 +11,19 @@ from .models import Scenario, Category
 
 # Create your views here.
 class Index(generic.View):
+    model = Scenario
     template_name = "WYR/index.html" 
-    
+    def get(self, request):
+        question = get_object_or_404(Scenario, pk=1)
+        return render(
+            request,
+            "WYR/index.html",
+            {
+                "scenario":question,
+            }
+
+        )
+       
 class SCQView(generic.DetailView):
     model = Scenario
     category_filter = Category
