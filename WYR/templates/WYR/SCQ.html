@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Would you rather?</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
 </head>
+
 <body>
-    <form action="{% url 'WYR:votes' scenario.id %}" method="post">
-    
-        {% csrf_token %}
-    
-        <fieldset>
-            <Legend>Would you rather?...</Legend>
+    <section id="play" class="page page-play">
+        <form action="{% url 'WYR:votes' scenario.id %}" method="post">
 
-            {% if error_message %}
-            <p class="error-message">
-                {{ error_message }}
-            </p>
-            {% endif %}
+            {% csrf_token %}
 
-            <button name="choice" value="uno">
-                {{ scenario.scenario_question_1 }}
-            </button>
-    
-            <button name="choice" value="dos">
-                {{ scenario.scenario_question_2 }}
-            </button>
-    
-        </fieldset>
-    
-    </form>
+            <fieldset class="question-area">
+                <section id="play" class="page page-play">
+                    <div class="question-area">
+                        <h1>WOULD YOU RATHER...</h1>
 
-    <section id="buttonsect">
-            
-                <form action="{% url 'WYR:prev' scenario.id %}" method="post">
-                    {% csrf_token %}
-            
-                    <input type="submit" value="Previous" id="prev" class="button">
-                </form>
-            
-                <a href="{% url 'WYR:index' %}" class="home-button">
-                    Go Home
-                </a>
-            
-                <form action="{% url 'WYR:next' scenario.id %}" method="post">
-                    {% csrf_token %}
-            
-                    <input type="submit" value="Next" id="next" class="button">
-                </form>
-            
-    </section>
+                        {% if error_message %}
+                        <p class="error-message">
+                            {{ error_message }}
+                        </p>
+                        {% endif %}
 
-    
-    <footer>
-        <p>&copy; 2026 Matthew Chihata</p>
-    </footer>
+                        <div class="choice-card">
+                            <button class="choice choice-blue" data-choice="left" name="choice" value="uno">
+                                <span>{{ scenario.scenario_question_1 }}</span>
+                            </button>
+
+                            <div class="or-circle">OR</div>
+
+                            <button class="choice choice-red" data-choice="right" name="choice" value="dos">
+                                <span>{{ scenario.scenario_question_2 }}</span>
+                            </button>
+                        </div>
+
+            </fieldset>
+
+        </form>
+
+        <nav class="screen-nav" aria-label="Play navigation">
+
+            <form action="{% url 'WYR:prev' scenario.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="submit" value="Previous" id="prev" class="round-nav blue">
+            </form>
+
+            <a href="{% url 'WYR:index' %}" class="home-circle">
+                Home
+            </a>
+
+            <form action="{% url 'WYR:next' scenario.id %}" method="post">
+                {% csrf_token %}
+
+                <input type="submit" value="Next" id="next" class="round-nav red">
+            </form>
+
+        </nav>
+
+
+        <footer class="bottom-bar">
+            <p>&copy; 2026 Matthew Chihata</p>
+        </footer>
 </body>
+
 </html>
