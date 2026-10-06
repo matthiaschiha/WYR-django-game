@@ -13,6 +13,7 @@ media/
 # IDEs
 .vscode/
 .idea/
+.code
 # OS files
 .DS_Store
 Thumbs.db
