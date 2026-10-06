@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Would You Rather?</title>
     {% load static %}
 
     <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
@@ -25,10 +25,11 @@
 
             <div class="home-buttons">
                 <a href="{% url 'WYR:SCQ' scenario.id %}"><button class="btn btn-dark" data-go="play">Play</button></a>
+                <a href="{% url 'WYR:about' %}"><button class="btn btn-dark" data-go="about">About</button></a>
             </div>
         </div>
 
-        <footer class="bottom-bar"></footer>
+        <footer class="bottom-bar"><p>&copy; 2026 Matthew Chihata</p></footer>
     </section>
 
 
