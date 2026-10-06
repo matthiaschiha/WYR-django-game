@@ -5,7 +5,7 @@ A web-based **Would You Rather** game built with Django. Players will be present
 *_Still under development_*
 
 **Future planned features**
-  * [ ] Choices
+  * [x] Choices
   * [ ] Global percentage counter
   * [ ] Random question shuffle
   * [ ] Question Suggestions 
