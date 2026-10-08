@@ -85,7 +85,7 @@ def TotalVotes(request, scenario_id):
     vote_percent2 = round((question.votesQ2/votes)*100, 2)
 
     return render(
-        request,"WYR/Votes.html",
+        request,"WYR/votes.html",
         {
             "scenario":question,
             "option_1":question.scenario_question_1,
