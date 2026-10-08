@@ -33,6 +33,20 @@ class VotesView(generic.DetailView):
     model = Scenario
     template_name = "WYR/votes.html"
 
+class AboutView(generic.DetailView):
+    model = Scenario
+    template_name = "WYR/about.html"
+    def get(self, request):
+        question = get_object_or_404(Scenario, pk=1)
+        return render(
+            request,
+            "WYR/about.html",
+            {
+                "scenario":question,
+            }
+
+        )
+
 
 def votes(request, scenario_id):
 
