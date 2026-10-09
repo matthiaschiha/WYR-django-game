@@ -6,7 +6,7 @@ A web-based **Would You Rather** game built with Django. Players will be present
 
 **Future planned features**
   * [x] Choices
-  * [ ] Global percentage counter
+  * [x] Global percentage counter
   * [ ] Random question shuffle
   * [ ] Question Suggestions 
   * [ ] Comments to tell user stories based on the question
@@ -15,3 +15,5 @@ A web-based **Would You Rather** game built with Django. Players will be present
   * [ ] Users Adding questions themselves
 
 **Updates soon**
+# GO SEE THE LIVE DEMO!
+https://would-you-rather-d9n3.onrender.com/WYR/index/
