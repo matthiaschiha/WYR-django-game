@@ -4,13 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Would You Rather?</title>
+    <title>Main Page</title>
     {% load static %}
-
+    <script src="{% static 'WYR/javascript.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
 </head>
 
 <body>
+    <!-- =========================
+         HOME / MAIN MENU
+         ========================= -->
+    <section id="home" class="page page-home">
+        <p class="coming-soon">More coming soon...</p>
+
+        <div class="home-content">
+            <div class="logo" aria-label="Would You Rather">
+                <span>WOULD YOU</span>
+                <span>RATHER...</span>
+            </div>
+
+            <div class="home-buttons">
+                <a href="{% url 'WYR:SCQ' scenario.id %}"><button class="btn btn-dark" data-go="play">Play</button></a>
+                <a href="{% url 'WYR:about' %}"><button class="btn btn-dark" data-go="about">About</button></a>
+            </div>
+        </div>
+
+        <footer class="bottom-bar"></footer>
+    </section>
+
+
+
     <!-- =========================
          HOME / MAIN MENU
          ========================= -->

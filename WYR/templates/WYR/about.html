@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Would You Rather? About</title>
+    <title>Would You Rather | About</title> 
     {% load static %}
 
     <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
+    <script src="{% static 'WYR/javascript.js' %}" defer></script>
 </head>
+
 <body>
-    this is the about page
+    <main class="site">
+        <section class="page page-about">
+            <p class="coming-soon">ABOUT THE GAME</p>
+            <div class="about-content"> <a href="{% url 'WYR:index' %}" style="text-decoration: none; color: inherit;">
+                    <div class="logo logo-small"> <span>WOULD YOU</span> <span>RATHER?</span> </div>
+                </a>
+                <h1>About Would You Rather</h1>
+                <hr>
+                <p> Would You Rather (WYR) is an interactive web application inspired by the popular Would You Rather
+                    game. It invites users to explore hypothetical scenarios and choose between two difficult, funny, or
+                    thought-provoking options. </p>
+                <p> Each scenario presents two choices. Users can vote for their preferred option and view the results,
+                    including vote counts and percentages, to see how their choices compare with other votes. </p>
+                <h2>About the Project</h2>
+                <p> This project was built to develop my skills in Python, Django, database management, and web
+                    development. It also gave me practical experience deploying a web application for public access.
+                </p>
+                <p> The application uses SQLite during local development and PostgreSQL in production. It is hosted on
+                    Render, with WhiteNoise serving static files. </p>
+                <h2>Explore</h2>
+                <div class="home-buttons"> <a href="{% url 'WYR:index' %}"> <button class="btn" type="button"> Would You
+                            Rather </button> </a> </div>
+            </div>
+            <div class="bottom-bar"></div>
+        </section>
+    </main>
 </body>
+
 </html>
