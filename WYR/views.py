@@ -23,6 +23,20 @@ class Index(generic.View):
             }
 
         )
+
+class AboutView(generic.View):
+    model = Scenario
+    template_name = "WYR/about.html" 
+    def get(self, request):
+        question = get_object_or_404(Scenario, pk=1)
+        return render(
+            request,
+            "WYR/about.html",
+            {
+                "scenario":question,
+            }
+
+        )
        
 class SCQView(generic.DetailView):
     model = Scenario
@@ -59,7 +73,6 @@ def votes(request, scenario_id):
             question.votesQ2 +=1
             question.save()
 
-    print(selected)
     
     return TotalVotes(request,scenario_id)
 

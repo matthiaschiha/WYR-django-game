@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
     {% load static %}
-
+    <script src="{% static 'WYR/javascript.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'WYR/stylistics.css' %}">
 </head>
 
@@ -25,6 +25,7 @@
 
             <div class="home-buttons">
                 <a href="{% url 'WYR:SCQ' scenario.id %}"><button class="btn btn-dark" data-go="play">Play</button></a>
+                <a href="{% url 'WYR:about' %}"><button class="btn btn-dark" data-go="about">About</button></a>
             </div>
         </div>
 

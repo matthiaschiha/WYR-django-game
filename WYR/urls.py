@@ -11,6 +11,6 @@ urlpatterns = [
     path("<int:scenario_id>/vote/", views.votes, name="votes"),
     path("<int:scenario_id>/next/", views.next_question, name="next"),
     path("<int:scenario_id>/prev/", views.prev_question, name="prev"),
-    path("about/", name="about")
+    path("about/", views.AboutView.as_view(),name="about")
 ]
      
