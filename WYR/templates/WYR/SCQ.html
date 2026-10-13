@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <a href="{% url 'WYR:index' %}" class="home-circle">
+        Home
+    </a>
     <section id="play" class="page page-play">
         <form action="{% url 'WYR:votes' scenario.id %}" method="post">
 
@@ -53,10 +56,6 @@
 
                 <input type="submit" value="Previous" id="prev" class="round-nav blue">
             </form>
-
-            <a href="{% url 'WYR:index' %}" class="home-circle">
-                Home
-            </a>
 
             <form action="{% url 'WYR:next' scenario.id %}" method="post">
                 {% csrf_token %}

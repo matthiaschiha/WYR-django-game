@@ -18,8 +18,8 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background: #f5f5f5;
-    color: #080808;
+    background: #3d3d3d;
+    color: #fff;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -37,36 +37,6 @@ button:focus-visible {
 }
 
 /* -------------------------
-   2. PAGE SYSTEM
-   Each screen is its own
-   editable section.
-   ------------------------- */
-.page {
-    display: block;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 38px;
-    overflow: hidden;
-}
-
-.page.active {
-    display: block;
-    animation: pageIn 0.35s ease both;
-}
-
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* -------------------------
    3. BOTTOM BLACK BAR
    ------------------------- */
 .bottom-bar {
@@ -74,8 +44,12 @@ button:focus-visible {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 27px;
+    height: 5dvh;
     background: #000;
+    color: white;
+    display: grid;
+    align-content: center;
+    justify-content: center;
 }
 
 /* -------------------------
@@ -87,6 +61,14 @@ button:focus-visible {
     left: 25px;
     margin: 0;
     font-size: 12px;
+    text-decoration: none;
+    color: #fff;
+    text-decoration-style: none;
+}
+
+.coming-soon a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .logo {
@@ -158,7 +140,7 @@ button:focus-visible {
 .btn {
     border: 0;
     border-radius: 5px;
-    min-height: 22px;
+    min-height: 50px;
     padding: 4px 15px;
     color: #fff;
     background: #000;
@@ -187,12 +169,15 @@ button:focus-visible {
    ------------------------- */
 .page-play {
     display: block;
+
 }
 
 .question-area {
     width: min(680px, calc(100% - 40px));
     margin: 0 auto;
     padding-top: 79px;
+    min-height: 25dvh;
+    border: none;
 }
 
 .question-area h1 {
@@ -220,6 +205,11 @@ button:focus-visible {
     transition:
         filter 0.2s ease,
         transform 0.2s ease;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+    padding: 12px 35px;
+    
 }
 
 .choice span {
@@ -267,7 +257,7 @@ button:focus-visible {
 .screen-nav {
     position: absolute;
     right: 0;
-    bottom: 53px;
+    bottom: 75px;
     left: 0;
     display: flex;
     align-items: center;
@@ -287,38 +277,42 @@ button:focus-visible {
 }
 
 .round-nav {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
+    height: 3.5rem;
+    width: 7rem;
+    border-radius: 10px;
     color: #fff;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 900;
+    padding: 10px;
 }
 
 .round-nav:hover,
 .home-circle:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     filter: brightness(1.08);
 }
 
 .round-nav.blue {
-    background: #2995ef;
+    background: #1baa0e;
 }
 
 .round-nav.red {
-    background: #ff3035;
+    background: #1baa0e;
 }
 
 .home-circle {
     position: absolute;
-    left: 50%;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    top: 10px;
+    right: 0px;
+    height: 3.5rem;
+    width: 7rem;
+    border-radius: 10px;
     color: #fff;
-    background: #000;
-    font-size: 9px;
+    background: #1baa0e;
+    font-size: 15px;
     transform: translateX(-50%);
+    text-decoration: none;
+    font-weight: bolder;
 }
 
 .home-circle:hover {
@@ -338,14 +332,24 @@ button:focus-visible {
     padding-top: 225px;
 }
 
+.results-content h1{
+    margin: 0 0 7px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
 .result-choice {
     width: 100%;
 }
 
 .result-bar {
     position: relative;
+    align-items: stretch;
+    gap: 10px;
     display: flex;
-    height: 30px;
+    height: 7dvh;
     overflow: visible;
     border-radius: 20px;
 }
@@ -356,8 +360,15 @@ button:focus-visible {
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 14px;
+    font-size: 1.1rem;
     font-weight: 700;
+    padding: 12px 35px;
+    min-width: 0;
+    height: auto;
+    min-height: 7dvh;
+    text-align: center;
+    overflow-wrap: anywhere;
+    white-space: normal;
 }
 
 .result-blue {
@@ -371,9 +382,16 @@ button:focus-visible {
 }
 
 .result-bar .or-circle {
-    width: 82px;
-    height: 82px;
-    font-size: 11px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 65px;
+    height: 65px;
+    font-size: 1.1rem;
+    
+    pointer-events: none;
 }
 
 .result-message {
@@ -412,13 +430,13 @@ button:focus-visible {
 }
 
 .meter-blue {
-    flex-basis: 60%;
+    flex-basis: 50%;
     background: #2995ef;
-    border-radius: 20px;
+    border-radius: 20px 0 0 20px;
 }
 
 .meter-red {
-    flex-basis: 40%;
+    flex-basis: 50%;
     background: #ff3035;
     border-radius: 0 20px 20px 0;
 }

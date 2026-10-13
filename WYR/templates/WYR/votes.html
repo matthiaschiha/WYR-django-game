@@ -14,9 +14,13 @@
 </head>
 
 <body>
+    <a href="{% url 'WYR:index' %}" class="home-circle">
+        Home
+    </a>
+
     <section id="results" class="page page-results">
         <div class="results-content">
-            <Legend>Would you rather?...</Legend>
+            <h1>Would you rather?...</h1>
 
             {% if error_message %}
             <p class="error-message">
@@ -37,7 +41,7 @@
                 </div>
 
                 <p class="result-message" id="resultMessage">
-                    You'd rather:
+                    You'd rather: {{ selected_choice }}
                 </p>
 
                 <div class="vote-labels">
@@ -59,10 +63,6 @@
 
             <input type="submit" value="Previous" id="prev" class="round-nav blue">
         </form>
-
-        <a href="{% url 'WYR:index' %}" class="home-circle">
-            Home
-        </a>
 
         <form action="{% url 'WYR:next' scenario.id %}" method="post">
             {% csrf_token %}

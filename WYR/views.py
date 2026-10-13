@@ -88,14 +88,17 @@ def votes(request, scenario_id):
             question.save()
 
     
-    return TotalVotes(request,scenario_id)
+    return TotalVotes(request,scenario_id, selected)
 
-def TotalVotes(request, scenario_id):
+def TotalVotes(request, scenario_id, selected):
     question = get_object_or_404(Scenario, pk=scenario_id)
     votes = question.votesQ1 + question.votesQ2
 
     vote_percent1 = round((question.votesQ1/votes)*100, 2)
     vote_percent2 = round((question.votesQ2/votes)*100, 2)
+
+    selected_choice = question.scenario_question_1 if selected == "uno" else question.scenario_question_2
+
 
     return render(
         request,"WYR/votes.html",
@@ -107,6 +110,7 @@ def TotalVotes(request, scenario_id):
             "Votes_2":question.votesQ2,
             "unopercentage":vote_percent1,
             "dospercentage":vote_percent2,
+            "selected_choice":selected_choice,
             "Total_Votes":votes,
 
         }
@@ -117,7 +121,6 @@ def next_question(request, scenario_id):
     current_question = get_object_or_404(Scenario, pk=scenario_id)
     questions = list(Scenario.objects.order_by("date_published"))
     position = questions.index(current_question)
-    print(len(questions))
 #^ Get the current question
     if position >= len(questions)-1:
         return render(
@@ -125,7 +128,8 @@ def next_question(request, scenario_id):
             "WYR/SCQ.html",
             {
                 "scenario":current_question,
-                "error_message":"You have reached the end of the Questions"
+                "error_message":"You have reached the end of the scenarios... There is nothing after this"
+                
             },
         )
     else:
@@ -146,7 +150,7 @@ def prev_question(request, scenario_id):
             "WYR/SCQ.html",
             {
                 "scenario":current_question,
-                "error_message":"You have reached the start of the Questions"
+                "error_message":"You have reached the start of the scenarios... There is nothing before this"
             },
         )
     else:
